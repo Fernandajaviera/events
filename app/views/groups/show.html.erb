@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Group:</strong>
+  <table width="100%">
+    <thead>
+        <tr>
+        <th>Name</th>
+        <th>Participants</th>
+        <th>Debut date</th>
+        <th>Personality</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td><%= @group.nombre %></td>
+        <td><%= @group.participantes %></td>
+        <td><%= @group.fecha_debut %></td>
+        <td><%= @group.personalidad %></td>
+        </tr>
+    </tbody>
+    </table>
+</p>
+
+<h1>Concerts</h1>
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th>Assistants</th>
+      <th>Date</th>
+      <th>Duration (Days)</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @group.concerts.each do |concert| %>
+      <tr>
+        <td><%= concert.asistentes %></td>
+        <td><%= concert.fecha %></td>
+        <td><%= concert.duracion %></td>
+        <td><%= link_to 'Show', group_concert_path(@group, concert) %></td>
+        <td><%= link_to 'Edit', edit_group_concert_path(@group, concert) %></td>
+        <td><%= link_to 'Destroy', group_concert_path(@group, concert), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>

@@ -1,0 +1,60 @@
+<%= form_with(model: @group, local: true) do |form| %>
+    <% if @group.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
+  
+        <ul>
+        <% @group.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <p>group fields</p>
+    <div class="field">
+        <%= form.label :nombre %>
+        <%= form.text_field :nombre %>
+    </div>
+    
+    <div class="field">
+        <%= form.label :participantes %>
+        <%= form.number_field :participantes %>
+      </div>
+    
+    <div class="field">
+        <%= form.label :fecha_debut %>
+        <%= form.date_field :fecha_debut %>
+    </div>
+    
+    <div class="field">
+        <%= form.label :personalidad %>
+        <%= form.text_field :personalidad %>
+    </div>
+    
+    <p>Concert fields</p>
+    <%= form.fields_for :concerts do |concert_form| %>
+        <div class="field">
+            <%= concert_form.label :fecha %>
+            <%= concert_form.date_field :fecha %>
+        </div>
+
+        <div class="field">
+            <%= concert_form.label :asistentes %>
+            <%= concert_form.number_field :asistentes %>
+        </div>
+        
+        <div class="field">
+            <%= concert_form.label :duracion %>
+            <%= concert_form.number_field :duracion %>
+        </div>
+
+        <hr>
+
+    <% end %>
+    
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+  

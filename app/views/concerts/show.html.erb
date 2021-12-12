@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @concert.fecha.strftime("%Y-%B-%A") %>
+</p>
+
+<p>
+  <strong>Assistants:</strong>
+  <%= @concert.asistentes %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @concert.duracion %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @concert.group.nombre %>
+</p>
+
+<%= link_to 'Edit', edit_group_concert_path(@group, @concert) %> |
+<%= link_to 'Back', group_concert_path(@group) %>
